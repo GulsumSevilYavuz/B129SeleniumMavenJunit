@@ -53,7 +53,7 @@ public class C01_Assertion {
     @Test//image Test => Amazon logosunun görüntülendiğini (isDisplayed()) test edin
     public void test02() {
         WebElement logo = driver.findElement(By.id("nav-logo-sprites"));
-        assertTrue(logo.isDisplayed());
+       Assert: assertTrue(logo.isDisplayed());
     }
 
     @Test//Search Box 'in erisilebilir oldugunu test edin(isEnabled())

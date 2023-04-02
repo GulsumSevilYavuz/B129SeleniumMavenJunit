@@ -63,6 +63,7 @@ public class C02_DropDown {
         Select stateDropDown = new Select(state);
         List<WebElement> stateList = stateDropDown.getOptions();
 
+
 //        for(WebElement w : stateList){
 //            System.out.println(w.getText());
 //        }
