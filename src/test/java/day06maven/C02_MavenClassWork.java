@@ -56,6 +56,8 @@ public class C02_MavenClassWork {
 
         //“The payment was successfully submitted.” mesajinin ciktigini control edin
         WebElement mesaj = driver.findElement(By.xpath("//*[text()='The payment was successfully submitted.']"));
+        mesaj.isDisplayed();
+       
         if (mesaj.isDisplayed()){
             System.out.println("TEST PASSED");
         }else System.out.println("TEST FAILED");

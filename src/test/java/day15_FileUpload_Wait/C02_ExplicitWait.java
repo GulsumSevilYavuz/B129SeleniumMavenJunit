@@ -23,6 +23,7 @@ public class C02_ExplicitWait extends TestBase {
         //Bir webelementin görünürlüğünü implicitly wait ile bu sayfada çözemedik
 
         //Hello World! Yazının sitede oldugunu test edin
+
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         //1.Yol
         /*

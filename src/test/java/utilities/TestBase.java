@@ -3,6 +3,7 @@ package utilities;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Before;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -14,6 +15,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 public abstract class TestBase {
     //TestBase class'ından Obje oluşturmanın önüne geçilmesi için abstract yapılabilir
@@ -31,10 +33,14 @@ public abstract class TestBase {
     @After
     public void tearDown() throws Exception {
         bekle(3);
-        //driver.quit();
+      //
+        //
+        //
+         driver.quit();
     }
     //HARD WAIT METHOD
     public static void bekle(int saniye){
+
         try {
             Thread.sleep(saniye*1000);
         } catch (InterruptedException e) {
@@ -87,7 +93,8 @@ public abstract class TestBase {
     public static void window(int sayi){
         driver.switchTo().window(driver.getWindowHandles().toArray()[sayi].toString());
     }
-    //Explicit Wait
+    //Explicit Wait Methods
+    //Visible Wait
     public static void visibleWait(WebElement element,int sayi){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(sayi));
         wait.until(ExpectedConditions.visibilityOf(element));
@@ -99,7 +106,14 @@ public abstract class TestBase {
         wait.until(ExpectedConditions.alertIsPresent());
 
     }
+//VisibleElementLocatorWait
+    public static WebElement  visibleWait (By locator, int sayi){
 
+     WebDriverWait wait =new WebDriverWait(driver,Duration.ofSeconds(sayi))  ;
+
+      return   wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+
+    }
 
 
 
