@@ -1,3 +1,4 @@
+import com.github.javafaker.Faker;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Assert;
@@ -8,60 +9,29 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.safari.SafariDriver;
+import org.openqa.selenium.support.ui.Select;
 import utilities.TestBase;
 
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.Duration;
+import java.util.Set;
 
 public class Deneme extends TestBase {
-
-
+    JavascriptExecutor js;
     @Test
-    public void test01() throws InterruptedException {
-        // 1- https://www.amazon.com sayfasina gidelim
-        driver.get("https://www.amazon.com");
-        String sayfa1Handle = driver.getWindowHandle();
-        Thread.sleep(2000);
+    public void name() {
+        driver.get("https://techproeducation.com");
+        bekle(2);
+        driver.findElement(By.xpath("//*[@class='eicon-close']")).click();
 
+        WebElement weOffer = driver.findElement(By.xpath("//*[text()='we offer']"));
+        bekle(2);
+        js=(JavascriptExecutor)driver;
 
-        // 2- url'in 'amazon' icerdigini test edelim
-        String amazonUrl = driver.getCurrentUrl();
-        Assert.assertTrue(amazonUrl.contains("amazon"));
-        Thread.sleep(2000);
-
-
-
-
-
-        // 3- yeni bir pencere acip, https://www.bestbuy.com sayfasina gidelim
-        driver.switchTo().newWindow(WindowType.WINDOW);
-        driver.get("https://www.bestbuy.com");
-        String sayfa2Handle = driver.getWindowHandle();
-        Thread.sleep(2000);
-
-
-
-
-
-        // 4- title'in 'Best Buy' icerdigini test edelim
-        String bestBuyTitle = driver.getTitle();
-        Assert.assertTrue(bestBuyTitle.contains("Best Buy"));
-        Thread.sleep(2000);
-
-
-
-
-        // 5- ilk sayfaya(amazon) donup sayfada java aratalım
-        driver.switchTo().window(sayfa1Handle);
-        driver.findElement(By.xpath("//input[@id='twotabsearchtextbox']")).sendKeys("Java" + Keys.ENTER);
-        Thread.sleep(2000);
-
-
-
-
-        // 6- arama sonuclarının 'Java' icerdigini test edelim
-        WebElement aramaSonucu = driver.findElement(By.xpath("//div[@class='a-section a-spacing-small a-spacing-top-small']"));
-        Assert.assertTrue(aramaSonucu.getText().contains("Java"));
-        Thread.sleep(2000);
-
+        js.executeScript("arguments[0].scrollIntoView(true);",weOffer);
+        bekle(2);
     }
 }

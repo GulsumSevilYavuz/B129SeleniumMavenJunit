@@ -31,13 +31,20 @@ public class C01_ScreenShot extends TestBase {
 
        TakesScreenshot ts= (TakesScreenshot) driver;
 
+/*TakesScreenshot ts=new TakesScreenshot() {
+    @Override
+    public <X> X getScreenshotAs(OutputType<X> target) throws WebDriverException {
+        return null;
+    }
+}
 
+FileUtils.copyFile(ts.getScreenshotAs(OutputType.FILE),new File(dosyaYolu));*/
                //TakeScreenschot=new  TakesScreenshot => böyle obje olusturdugunda exception atarak yönlendirior
         //2.Adım: TakesScreenshot arayüzünden obje oluşturmak
 
 
         //3.Adım:
-        /*
+      /*
             FileUtils class'ı file nesneleri ile birlikte kullanabileceğimiz methodlar içerir.
         Bu methodları kullanarak dosyalarda okuma, yazma, kopyalama ve silme işlemlerini çok daha kolay yapabiliriz
         NOT: Files.write() methodu'da aynı işlemi görür
